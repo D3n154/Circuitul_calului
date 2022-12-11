@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const int n = 8;
+const int n = 5;
 int a[n][n];
 int i_init,j_init;//pozitii initiale i si j
 const int directii = 8;
@@ -50,7 +50,7 @@ int Mutare_cal(int i, int j, int pas)
 	int i_vecin;
 	int j_vecin;
 
-	if (pas == n*n)
+	if (pas == n*n+1)
 		return 0;
 	else
 	{
@@ -61,9 +61,12 @@ int Mutare_cal(int i, int j, int pas)
 			if (Verificare_poz(i_vecin, j_vecin) != 0)
 			{
 				a[i_vecin][j_vecin] = pas;
-				Afisare();
 				pas++;
+				cout << pas;
+				Afisare();
 				Mutare_cal(i_vecin, j_vecin, pas);
+				a[i_vecin][j_vecin] = 0;
+				pas--;
 			}
 		}
 	}
